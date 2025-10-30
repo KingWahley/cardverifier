@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CardVerifier | Trusted Gift Card Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Fade-in animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease;
+      }
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Mobile menu animation */
+      #mobile-menu {
+        transition: all 0.3s ease-in-out;
+        transform-origin: top;
+      }
+      #mobile-menu.open {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+      #mobile-menu.closed {
+        transform: scaleY(0);
+        opacity: 0;
+      }
+
+      /* Hamburger animation */
+      .menu-btn span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        background-color: #312e81;
+        margin: 5px 0;
+        transition: 0.3s;
+      }
+      .menu-btn.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .menu-btn.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-btn.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur shadow-sm z-50">
+      <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+        <h1 class="text-2xl font-bold text-indigo-700">CardVerifier</h1>
+        <nav class="hidden md:flex space-x-8 font-medium">
+          <a href="#security" class="hover:text-indigo-600 transition">Security</a>
+          <a href="#process" class="hover:text-indigo-600 transition">How It Works</a>
+          <a href="#about" class="hover:text-indigo-600 transition">About</a>
+          <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+        </nav>
+        <div class="md:hidden menu-btn cursor-pointer" id="menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="absolute w-full bg-white md:hidden closed origin-top hidden">
+        <nav class="flex flex-col text-center space-y-4 py-4 font-medium">
+          <a href="#security" class="hover:text-indigo-600 transition">Security</a>
+          <a href="#process" class="hover:text-indigo-600 transition">How It Works</a>
+          <a href="#about" class="hover:text-indigo-600 transition">About</a>
+          <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-28 md:pt-40 pb-20 bg-gradient-to-br from-indigo-700 to-violet-600 text-white">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center px-6 gap-10">
+        <div class="md:w-1/2 space-y-6 fade-in">
+          <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            Verify Gift Cards Safely, Securely, Instantly.
+          </h2>
+          <p class="text-gray-200 text-lg leading-relaxed">
+            CardVerifier helps you confirm card authenticity in seconds. We never store or share your information — every verification is private, encrypted, and deleted after use.
+          </p>
+          <a href="#" class="inline-block bg-white text-indigo-700 font-semibold py-3 px-8 rounded-lg shadow hover:bg-gray-100 transition">
+            Start Verifying
+          </a>
+        </div>
+        <div class="md:w-1/2 fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=900&q=80"
+            alt="Gift card verification visual"
+            class="rounded-xl shadow-2xl w-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-6 text-center fade-in">
+        <h3 class="text-3xl font-bold text-gray-900 mb-6">Your Privacy Comes First</h3>
+        <p class="text-gray-600 max-w-3xl mx-auto mb-12">
+          At CardVerifier, we believe in complete data independence. We don’t track, log, or store any card details. Once your verification session ends, the data is permanently erased.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="p-6 rounded-xl shadow hover:shadow-xl transition bg-gray-50">
+            <img src="https://cdn.prod.website-files.com/681c03588e35f97c74427cad/683e2b222bea634d051d2e55_thought-leadership-privacy-blog-yoast.webp"
+              alt="Data privacy" class="rounded-md mb-4 mx-auto h-40 object-cover" />
+            <h4 class="font-semibold text-lg text-indigo-700">No Data Storage</h4>
+            <p class="text-gray-600 text-sm mt-2">
+              We never store your card numbers or PINs. Every check runs in real-time, with zero persistence.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-xl shadow hover:shadow-xl transition bg-gray-50">
+            <img src="https://www.hkcert.org/f/guideline/180932/930p523/hkcert-Data-Protection-Guideline-banner-1860x1046.jpg"
+              alt="Encryption security" class="rounded-md mb-4 mx-auto h-40 object-cover" />
+            <h4 class="font-semibold text-lg text-indigo-700">Bank-Level Encryption</h4>
+            <p class="text-gray-600 text-sm mt-2">
+              Every data exchange is encrypted using AES-256 standards, ensuring end-to-end protection.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-xl shadow hover:shadow-xl transition bg-gray-50">
+            <img src="https://global.ariseplay.com/amg/www.thisdaylive.com/uploads/5-7.png"
+              alt="Independent validation" class="rounded-md mb-4 mx-auto h-40 object-cover" />
+            <h4 class="font-semibold text-lg text-indigo-700">Independent Validation</h4>
+            <p class="text-gray-600 text-sm mt-2">
+              No third-party access. No ads. No tracking pixels. Just safe, private verification.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-6 fade-in">
+        <h3 class="text-3xl font-bold text-gray-900 text-center mb-12">How Verification Works</h3>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">1</div>
+              <div>
+                <h4 class="font-semibold text-lg text-indigo-700">Select Card Type</h4>
+                <p class="text-gray-600">Choose your gift card brand (Amazon, Apple, Visa, and more).</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">2</div>
+              <div>
+                <h4 class="font-semibold text-lg text-indigo-700">Enter Card Details</h4>
+                <p class="text-gray-600">Type in your card number and PIN securely into our encrypted input fields.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold">3</div>
+              <div>
+                <h4 class="font-semibold text-lg text-indigo-700">Get Instant Results</h4>
+                <p class="text-gray-600">Our system validates the card instantly — no data stored, no traces left behind.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <img src="https://images.unsplash.com/photo-1633265486064-086b219458ec?auto=format&fit=crop&w=900&q=80"
+              alt="Verification process" class="rounded-xl shadow-xl" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white fade-in">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center px-6 gap-12">
+        <div class="md:w-1/2">
+          <img src="https://img.freepik.com/free-photo/businesspeople-having-good-time-meeting_1098-1786.jpg?semt=ais_hybrid&w=740&q=80"
+            alt="Team" class="rounded-xl shadow-lg w-full" />
+        </div>
+        <div class="md:w-1/2 space-y-6">
+          <h3 class="text-3xl font-bold text-gray-900">About CardVerifier</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Founded on the principle of digital trust, CardVerifier was built to make gift card validation simple, fast, and most importantly — private.  
+            We’re not a marketplace, not a reseller, and not a collector of your information. Our mission is to ensure your verification experience is secure, transparent, and anonymous.
+          </p>
+          <a href="#contact" class="inline-block bg-indigo-700 text-white py-3 px-6 rounded-lg shadow hover:bg-indigo-800 transition">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="py-20 bg-gradient-to-r from-indigo-700 to-violet-600 text-white text-center fade-in">
+      <h3 class="text-3xl font-bold mb-4">Your Security. Our Promise.</h3>
+      <p class="max-w-2xl mx-auto text-gray-200 mb-8">
+        Join thousands who trust CardVerifier for fast, secure, and anonymous gift card validation.  
+        Verify your first card now — no signup, no data tracking.
+      </p>
+      <a href="#" class="inline-block bg-white text-indigo-700 font-semibold py-3 px-8 rounded-lg shadow hover:bg-gray-100 transition">
+        Try it Free
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-white text-center text-gray-500 text-sm border-t">
+      <p>© <span id="year"></span> CardVerifier. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("open");
+        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("open");
+        mobileMenu.classList.toggle("closed");
+      });
+
+      // Scroll animation
+      const fadeElements = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      }, { threshold: 0.15 });
+      fadeElements.forEach((el) => observer.observe(el));
+
+      // Dynamic Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
