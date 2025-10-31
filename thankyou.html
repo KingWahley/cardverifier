@@ -5,10 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verification in Progress</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0);
+        }
+        70% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .animate-pop {
+        animation: pop 0.6s ease-out;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
 
   <body class="min-h-screen bg-gradient-to-br from-indigo-600 to-violet-500 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 text-center space-y-6 animate-fade-in">
+    <!-- Container -->
+    <div id="container" class="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 text-center space-y-6 animate-fade-in">
       <div class="flex justify-center">
         <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -19,16 +56,10 @@
 
       <h2 class="text-2xl font-semibold text-gray-800">Verification in Progress</h2>
       <p class="text-gray-500">
-        Please enter your email below — you’ll be notified in a few seconds once your card verification is completed.
+        Please enter your email below; you’ll be notified in a few seconds once your card verification is completed.
       </p>
 
-      <form
-        
-        class="space-y-4"
-      >
-        
-
-        <!-- Email input -->
+      <form id="verifyForm" class="space-y-4">
         <input
           type="email"
           name="user_email"
@@ -50,10 +81,43 @@
       </p>
     </div>
 
+    <!-- Success Animation Section -->
+    <div id="success" class="hidden bg-white rounded-2xl shadow-xl w-full max-w-md p-8 text-center space-y-6 animate-fade-in">
+      <div class="flex justify-center">
+        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center animate-pop">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-semibold text-gray-800">Verification Successful</h2>
+      <p class="text-gray-500">
+        Your card verification is complete! You’ll receive an update in your inbox shortly.
+      </p>
+
+      <button
+        onclick="window.location.reload()"
+        class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
+      >
+        Done
+      </button>
+    </div>
+
     <script>
-      // Optional: small fade-in animation
-      document.addEventListener("DOMContentLoaded", () => {
-        document.body.classList.add("opacity-100");
+      const form = document.getElementById("verifyForm");
+      const container = document.getElementById("container");
+      const success = document.getElementById("success");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Simulate verification delay
+        container.classList.add("animate-fade-in");
+        setTimeout(() => {
+          container.classList.add("hidden");
+          success.classList.remove("hidden");
+        }, 1500);
       });
     </script>
   </body>
